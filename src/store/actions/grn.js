@@ -12,3 +12,9 @@ export const playerWins = () => {
     type: actionTypes.PLAYER_WINS
   };
 };
+export const clickedHint = hint => {
+  return {
+    type: actionTypes.CLICKED_HINT,
+    payload: hint
+  };
+};

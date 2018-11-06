@@ -4,13 +4,16 @@ import { connect } from "react-redux";
 import * as actionCreators from "./store/actions/index";
 import PlayerWins from "./PlayerWins";
 import PlayerLoses from "./PlayerLoses";
+import { Button } from "reactstrap";
+import Hints from "./Hints";
 
 class PlayGame extends Component {
   constructor(props) {
     super(props);
     this.state = {
       numOfTries: 5,
-      message: ""
+      message: "",
+      showHints: false
     };
     this.handleSubmit = this.handleSubmit.bind(this);
   }
@@ -36,7 +39,13 @@ class PlayGame extends Component {
   handleSubmit(event) {
     event.preventDefault();
     if (this.state.numOfTries > 0) {
-      let input = this.textInput.value;
+      let input = "";
+      if (this.props.clickedHint) {
+        input = this.props.clickedHint;
+      } else {
+        input = this.textInput.value;
+      }
+
       if (input == this.props.randNum) {
         this.props.playerWins();
       } else {
@@ -44,6 +53,10 @@ class PlayGame extends Component {
         this.setState({ numOfTries: this.state.numOfTries - 1 });
       }
     }
+  }
+
+  hints() {
+    this.setState({ showHints: !this.state.showHints });
   }
 
   checkStatus() {
@@ -60,15 +73,27 @@ class PlayGame extends Component {
             <label>
               Guess:
               <input
+                className="form-control"
                 type="text"
                 name="guess"
                 ref={input => (this.textInput = input)}
+                value={
+                  this.props.clickedHint !== 0 ? this.props.clickedHint : null
+                }
               />
+              <Button
+                className="btn btn-outline-secondary w-100"
+                type="submit"
+                value="submit"
+              >
+                Submit
+              </Button>
             </label>
-            <input type="submit" value="submit" />
           </form>
 
           <h1>You have only {this.state.numOfTries} guesses left</h1>
+          <Button onClick={() => this.hints()}> Hints</Button>
+          {this.state.showHints && <Hints />}
         </div>
       );
     }
@@ -82,7 +107,8 @@ class PlayGame extends Component {
 const mapStateToProps = state => {
   return {
     randNum: state.rootNum.randNum,
-    playerWon: state.rootNum.playerWon
+    playerWon: state.rootNum.playerWon,
+    clickedHint: state.rootNum.clickedHint
   };
 };
 

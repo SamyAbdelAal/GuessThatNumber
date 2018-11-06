@@ -2,7 +2,8 @@ import * as actionTypes from "../actions/actionTypes";
 
 const initialState = {
   randNum: 0,
-  playerWon: false
+  playerWon: false,
+  clickedHint: 0
 };
 
 const getRandNumReducer = (state = initialState, action) => {
@@ -16,6 +17,11 @@ const getRandNumReducer = (state = initialState, action) => {
       return {
         ...state,
         playerWon: true
+      };
+    case actionTypes.CLICKED_HINT:
+      return {
+        ...state,
+        clickedHint: action.payload
       };
     default:
       return state;

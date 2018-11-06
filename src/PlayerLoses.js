@@ -1,7 +1,5 @@
 import React, { Component } from "react";
 import "./App.css";
-import { connect } from "react-redux";
-import * as actionCreators from "./store/actions/index";
 
 class PlayerLoses extends Component {
   render() {

@@ -1,1 +1,1 @@
-export { getRandNum, playerWins } from "./grn";
+export { getRandNum, playerWins, clickedHint } from "./grn";

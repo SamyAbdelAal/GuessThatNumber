@@ -5,14 +5,23 @@ import * as actionCreators from "./store/actions/index";
 import PlayGame from "./PlayGame";
 
 class App extends Component {
+  state = { isVisible: true };
   componentDidMount() {
     this.props.getRandNum();
+    setInterval(() => {
+      this.setState({ isVisible: !this.state.isVisible });
+    }, 1000);
   }
 
   render() {
+    const { isVisible } = this.state;
     return (
-      <div>
-        <PlayGame />
+      <div className="App">
+        <div className="App-header">
+          <div className="game rounded">
+            <PlayGame />
+          </div>
+        </div>
       </div>
     );
   }

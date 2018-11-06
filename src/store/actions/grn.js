@@ -18,3 +18,16 @@ export const clickedHint = hint => {
     payload: hint
   };
 };
+export const resetHint = () => {
+  return {
+    type: actionTypes.RESET_HINT,
+    payload: 0
+  };
+};
+export const decrementTries = tries => {
+  tries--;
+  return {
+    type: actionTypes.DECREMENT_TRIES,
+    payload: tries
+  };
+};

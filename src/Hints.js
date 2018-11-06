@@ -8,7 +8,7 @@ import FadeIn from "react-fade-in";
 class Hints extends Component {
   shuffle() {
     let array = [];
-    for (let i = 0; i < 9; i++) {
+    for (let i = 0; i < this.props.numOfTries * 2 - 1; i++) {
       const j = Math.floor(Math.random() * 100) + 1;
       array.push(j);
     }
@@ -29,6 +29,7 @@ class Hints extends Component {
             <ListGroup style={{ display: "block" }}>
               {this.shuffle().map(i => (
                 <ListGroupItem
+                  className="btn btn-outline-success"
                   onClick={() => this.props.clickedHint(i)}
                   style={{ display: "inline-block " }}
                 >
@@ -44,7 +45,8 @@ class Hints extends Component {
 }
 const mapStateToProps = state => {
   return {
-    randNum: state.rootNum.randNum
+    randNum: state.rootNum.randNum,
+    numOfTries: state.rootNum.numOfTries
   };
 };
 const mapDispatchToProps = dispatch => {

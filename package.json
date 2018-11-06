@@ -9,6 +9,7 @@
     "react": "^16.6.0",
     "react-dom": "^16.6.0",
     "react-fade-in": "^0.1.6",
+    "react-pose": "^4.0.1",
     "react-redux": "^5.1.0",
     "react-scripts": "2.1.1",
     "reactstrap": "^6.5.0",

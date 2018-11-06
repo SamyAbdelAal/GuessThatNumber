@@ -20,8 +20,8 @@ const Input = posed.input({
   focus: {
     color: "#000",
     outlineWidth: "12px",
-    outlineOffset: "5px",
-    outlineColor: "#AB36FF",
+    outlineOffset: "15px",
+    outlineColor: "#fff",
     scale: 1.2
   }
 });
@@ -30,7 +30,6 @@ class PlayGame extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      numOfTries: 5,
       message: {},
       showHints: false
     };
@@ -76,6 +75,7 @@ class PlayGame extends Component {
         this.giveHint(input);
         // this.setState({ numOfTries: this.state.numOfTries - 1 });
         this.props.decrementTries(this.props.numOfTries);
+        this.setState({ showHints: false });
       }
     }
   }
@@ -108,7 +108,9 @@ class PlayGame extends Component {
                   name="guess"
                   ref={input => (this.textInput = input)}
                   value={
-                    this.props.clickedHint !== 0 ? this.props.clickedHint : null
+                    this.props.clickedHint !== 0
+                      ? this.props.clickedHint
+                      : undefined
                   }
                 />
                 <button
@@ -116,14 +118,13 @@ class PlayGame extends Component {
                   type="submit"
                   value="submit"
                 >
-                  Submit
+                  Check your luck
                 </button>
               </label>
             </form>
 
             <h1>You have only {this.props.numOfTries} guesses left</h1>
             <button className="btn hint" onClick={() => this.hints()}>
-              {" "}
               Hints
             </button>
             {this.state.showHints && <Hints />}

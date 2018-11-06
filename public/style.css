@@ -23,3 +23,27 @@ li.list-group-item {
 .hint {
   background-color: #69bb01;
 }
+
+input {
+  padding: 10px;
+  font-size: 18px;
+  outline-style: dotted;
+}
+
+ul {
+  list-style: none;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  flex-direction: row;
+  display: flex;
+}
+
+li {
+  display: block;
+  border-radius: 2px;
+  background: rgba(6, 80, 4, 0.5);
+  width: 100px;
+  height: 100px;
+  margin: 10px;
+}

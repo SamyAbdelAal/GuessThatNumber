@@ -6,6 +6,11 @@ class PlayerLoses extends Component {
     return (
       <FadeIn>
         <div className="App">
+          <img
+            src="        https://vignette.wikia.nocookie.net/the-adventures-of-the-gladiators-of-cybertron/images/e/e5/The_Riddler.png/revision/latest?cb=20150411163609
+"
+          />
+
           <h1>You just lost! better luck next time.</h1>
           <button
             id="reset"

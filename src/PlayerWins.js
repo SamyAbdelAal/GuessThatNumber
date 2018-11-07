@@ -5,8 +5,8 @@ class PlayerWins extends Component {
   render() {
     return (
       <FadeIn>
-        {" "}
         <div className="App">
+          <img src="https://mbtskoudsalg.com/images/rappers-drawing-joker.gif" />
           <h1>
             How could you have won?! You were just lucky, don't let it get to
             your head...
